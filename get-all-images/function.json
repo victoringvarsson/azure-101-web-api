@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "route": "images",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "allimagesdoc",
+      "type": "cosmosDB",
+      "direction": "in",
+      "databaseName": "azure101",
+      "collectionName": "images",
+      "createIfNotExists": false,
+      "connectionStringSetting": "victoricosmosdb_DOCUMENTDB"
+    }
+  ],
+  "scriptFile": "../dist/get-all-images/index.js"
+}

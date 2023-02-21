@@ -1,0 +1,4 @@
+POST http://localhost:7071/images
+content-type: application/octet-stream
+
+< test.jpg

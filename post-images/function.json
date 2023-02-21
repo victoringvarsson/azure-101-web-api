@@ -1,0 +1,36 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "route": "images",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "postimages",
+      "type": "cosmosDB",
+      "direction": "out",
+      "databaseName": "azure101",
+      "collectionName": "images",
+      "createIfNotExists": false,
+      "connectionStringSetting": "victoricosmosdb_DOCUMENTDB"
+    },
+    {
+      "name": "messageservicebus",
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "victori_servicebus_CONNECTION_STRING",
+      "queueName": "thumbnailqueue"
+    }
+  ],
+  "scriptFile": "../dist/post-images/index.js"
+}

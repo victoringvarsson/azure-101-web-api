@@ -1,0 +1,46 @@
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "thumbnailqueue",
+      "connection": "victori_servicebus_CONNECTION_STRING"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputimage",
+      "databaseName": "azure101",
+      "collectionName": "images",
+      "connectionStringSetting": "victoricosmosdb_DOCUMENTDB",
+      "id": "{id}",
+      "PartitionKey": "{id}"
+    },
+    {
+      "type": "blob",
+      "direction": "in",
+      "name": "inputimageblob",
+      "path": "images/{id}",
+      "dataType": "binary",
+      "connection": "victorimagestore_CONNECTION_STRING"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputimage",
+      "databaseName": "azure101",
+      "collectionName": "images",
+      "createIfNotExists": false,
+      "connectionStringSetting": "victoricosmosdb_DOCUMENTDB"
+    },
+    {
+      "type": "blob",
+      "direction": "out",
+      "name": "outputimageblob",
+      "path": "thumbnail/{id}",
+      "connection": "victorimagestore_CONNECTION_STRING"
+    }
+  ],
+  "scriptFile": "../dist/servicebusthumbnail/index.js"
+}

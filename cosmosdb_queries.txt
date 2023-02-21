@@ -1,0 +1,19 @@
+### 1
+
+SELECT c.model, c.firmware, c.warranty.expiresInDays FROM c 
+WHERE c.deviceId = "c5835b2c-c7cc-4048-a54c-92fb53303c0d"
+
+### 2
+
+SELECT COUNT(1) AS numberOfDevices FROM c
+WHERE c.organizationId = "00c3d472-e878-4457-a96f-167b1932cb06"
+
+### 3
+
+SELECT VALUE(c.deviceId) FROM c 
+WHERE c.warranty.expiresInDays < 7
+
+### 4
+
+SELECT * FROM c
+WHERE ARRAY_CONTAINS(c.tags, "wireless", true)
