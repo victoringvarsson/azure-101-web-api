@@ -1,7 +1,7 @@
 {
   "bindings": [
     {
-      "name": "mySbMsg",
+      "name": "message",
       "type": "serviceBusTrigger",
       "direction": "in",
       "queueName": "thumbnailqueue",
@@ -10,17 +10,17 @@
     {
       "type": "cosmosDB",
       "direction": "in",
-      "name": "inputimage",
+      "name": "document",
       "databaseName": "azure101",
       "collectionName": "images",
       "connectionStringSetting": "victoricosmosdb_DOCUMENTDB",
       "id": "{id}",
-      "PartitionKey": "{id}"
+      "partitionKey": "{id}"
     },
     {
       "type": "blob",
       "direction": "in",
-      "name": "inputimageblob",
+      "name": "image",
       "path": "images/{id}",
       "dataType": "binary",
       "connection": "victorimagestore_CONNECTION_STRING"
